@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
+import Modal from "./Modal";
 
 function Card({ book }) {
+  const [show, setShow] = useState(false);
+  const [bookItem, setBookItem] = useState("");
   return (
     <>
       {book.map((item) => {
@@ -14,7 +17,13 @@ function Card({ book }) {
         if (tumbnails != undefined && authors != undefined) {
           return (
             <>
-              <div className="card" key={id}>
+              <div
+                className="card"
+                onClick={() => {
+                  setShow(true), setBookItem(item);
+                }}
+                key={id}
+              >
                 <img src={tumbnails} alt="" />
                 <div className="bottom">
                   <h3 className="title">{title}</h3>
@@ -24,6 +33,11 @@ function Card({ book }) {
                   })}
                 </div>
               </div>
+              <Modal
+                show={show}
+                item={bookItem}
+                onClose={() => setShow(false)}
+              />
             </>
           );
         }

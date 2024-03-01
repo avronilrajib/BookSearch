@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Card from "./Card";
 import axios from "axios";
+
 function Main() {
   const [searchText, setSearchText] = useState("");
   const [bookData, setBookData] = useState([]);
@@ -52,6 +53,7 @@ function Main() {
           <img src="./img/im.png" alt="" />
         </div>
       </div>
+
       <div className="container">
         <Card book={bookData} />
       </div>
